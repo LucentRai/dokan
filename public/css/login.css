@@ -1,0 +1,54 @@
+
+body {
+	background: #000;
+}
+#login {
+	width: 25rem;
+	max-width: 500px;
+	padding: 2rem;
+	background-color: #FFF;
+	border-radius: 2rem;
+}
+#login h1 {
+	color: #000;
+	text-align: center;
+}
+.form-control {
+	position: relative;
+}
+.form-control input {
+	border: 2px solid var(--clr-mild-orange);
+	background-color: #fff;
+	background-clip: padding-box;
+	color: var(--clr-mild-red);
+	border-radius: .25rem;
+	display: block;
+	width: 100%;
+	padding: 1rem .75rem;
+	margin-bottom: 1.25rem;
+	font-size: 1rem;
+	font-weight: 400;
+	height: calc(3.5rem + 2px);
+	line-height: 1.25;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.form-control input:focus {
+	outline: 0;
+	border-color: var(--clr-mild-red);
+}
+.form-control.success input {
+	border-color: var(--clr-success);
+}
+.form-control.error input {
+	border-color: var(--clr-error);
+}
+.form-control small {
+	color: var(--clr-error);
+	position: absolute;
+	bottom: -1rem;
+	right: 0;
+	visibility: hidden;
+}
+.form-control.error small {
+	visibility: visible;
+}

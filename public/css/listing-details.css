@@ -1,0 +1,55 @@
+h2 {
+	margin: 2rem 0 1rem 0;
+}
+.row {
+	margin: 0;
+	align-items: flex-start;
+}
+.col-2 {
+	padding: 1rem;
+}
+.listing-info {
+	display: block;
+	font-size: 1.2rem;
+	line-height: 2.2rem;
+}
+.price, .highest-bid, .deadline, .remaining-days {
+	font-family: AvantGarde, Arial, sans-serif;
+	font-weight: bold;
+}
+.price, .highest-bid {
+	font-size: 2rem;
+}
+.price {
+	color: #FFF;
+}
+.highest-bid {
+	color: var(--clr-yellow);
+}
+.bid-form {
+	display: flex;
+}
+.bid-form .btn {
+	margin: 8px;
+}
+.user-bid {
+	color: #FFF;
+	background: none;
+	border: 2px var(--clr-orange) solid;
+	border-radius: 8px;
+	padding: 0.5rem;
+	margin: 8px;
+	width: 48%;
+}
+.bid-form .btn {
+	width: 48%;
+}
+p {
+	margin-bottom: 1rem;
+}
+.listing-id {
+	border-radius: 0.5rem;
+	background: var(--clr-off-white);
+	padding: 4px;
+	color: var(--clr-off-black);
+}
