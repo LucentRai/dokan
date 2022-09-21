@@ -41,6 +41,7 @@
 	--clr-mild-red: #D95F43;
 	--clr-mild-green: #C5D99A;
 	--clr-inactive-grey: #707070;
+	--clr-dark-grey: #323232;
 	--clr-off-black: #0D0D0D;
 	--clr-error: #FF0000;
 	--clr-success: #00FF20;
@@ -69,7 +70,7 @@ a:hover {
 	color: #FFF;
 }
 
-h1, h2, h3, p, span {
+h1, h2, h3, h4, p, span {
 	color: #FFF;
 }
 h1 {
@@ -236,8 +237,7 @@ nav ul li {
 .container {
 	max-width: 1366px;
 	margin: 0 auto;
-	padding-left: 25px;
-	padding-right: 25px;
+	padding: 1rem 25px;
 }
 .row {
 	margin-top: 50px;
@@ -448,6 +448,11 @@ ul {
 	transition: transform 1s;
 }
 
-.currency{
+.currency {
 	font-size: 1.2rem;
+}
+
+.price {
+	font-family: AvantGardeMedium, Arial, sans-serif;
+	font-size: 1.5rem;
 }
