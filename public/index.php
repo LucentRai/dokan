@@ -4,6 +4,10 @@ include_once(TEMPLATE_FRONT . DS . "header.php");
 
 $categoryQuery = query("SELECT * FROM category");	
 confirm($categoryQuery);
+
+$popular_listing_query = query("SELECT * FROM listing ORDER BY views desc limit 4;");
+confirm($popular_listing_query);
+
 ?>
 	<title>Dokan - Auction Store</title>
 	<link rel="stylesheet" href="css/home.css">
@@ -24,10 +28,10 @@ confirm($categoryQuery);
 			<h2 class="title">Popular Listings</h2>
 			<div class="listing-gallery">
 			<?php
-			for($i=0; $i < 4; $i++){
+			while($popular_listing = mysqli_fetch_array($popular_listing_query)){
 				echo <<<DELIMETER
-					<a class="popular-listing-tile">
-						<img src="assets/img/listing/painting.jpg" alt="" title="">
+					<a class="popular-listing-tile" href="listing-details.php?id={$popular_listing['id']}">
+						<img src="assets/img/listing/user_upload/{$popular_listing['id']}_0.jpg">
 						<div class="tile-overlay">
 						</div>
 						<div class="listing-info">

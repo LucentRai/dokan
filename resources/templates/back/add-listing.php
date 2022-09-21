@@ -2,7 +2,7 @@
 require_once("../../config.php");
 
 if(isset($_POST['title'])){
-	$id = uniqid();
+	$id = uuid();
 	$title = escape_string($_POST['title']);
 	$description = escape_string($_POST['description']);
 	$offered_price = escape_string($_POST['offered_price']);
@@ -24,19 +24,15 @@ if(isset($_POST['title'])){
 			$upload_ok = false;
 		}
 		
-		if($_FILES['file']['size'] > 500000){	// Check file size
-			set_message("Sorry, your file is too large.");
-			$uploadOk = false;
-		}
+		// if($_FILES['file']['size'] > 500000){	// Check file size
+		// 	set_message("Sorry, your file is too large.");
+		// 	$uploadOk = false;
+		// }
 
 		if($upload_ok) {	// if everything is alright, upload image
 			if(move_uploaded_file($_FILES['file']['tmp_name'][$i], $upload_file)) {
+				rename($upload_file, $upload_dir . $id . "_$i.$img_file_type");
 				$upload_file = str_ireplace("../", '', $upload_file);
-
-				$insert_query = query( "INSERT INTO listing (id, name, category, status, post_date_time, deadline, seller_username, description, img, offered_price, views) VALUES ('$id', '$title', $category, 0, '$current_date_time', '$deadline', '{$_SESSION['user']}', '{$description}', '{$total_img}', $offered_price, 0);" );
-				[\\\ccc]
-				// echo "INSERT INTO listing (id, name, category, status, post_date_time, deadline, seller_username, description, thumbnail, img, offered_price, views) VALUES (uuid(), '$title', $category, 0, '$current_date_time', '$deadline', '{$_SESSION['user']}', '{$description}', '', '{$_FILES['file']['name'][$i]}', $offered_price, 0);" ;
-				// confirm($insert_query);
 
 				set_message("Listing added");
 			}
@@ -44,8 +40,10 @@ if(isset($_POST['title'])){
 				set_message("Sorry, there was an error uploading your file.");
 			}
 		}
-		// redirect("../../../public/user.php?u_name={$_SESSION['user']}&page=add_post");
 	}
+	$insert_query = query( "INSERT INTO listing (id, name, category, status, post_date_time, deadline, seller_username, description, img, offered_price, views) VALUES ('$id', '$title', $category, 0, '$current_date_time', '$deadline', '{$_SESSION['user']}', '{$description}', '{$total_img}', $offered_price, 0);" );
+	confirm($insert_query);
+	redirect("../../../public/user.php?u_name={$_SESSION['user']}&page=add_post");
 }
 else{
 	redirect("index.php");
