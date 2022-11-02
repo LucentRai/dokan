@@ -58,7 +58,7 @@
 			<h4>{$pre_listing['name']}</h4>
 			<div class="listing-detail">
 				<div class="thumb-container">
-					<img class="thumb" src="assets/img/listing/user_upload{$pre_listing['id']}_0.jpg" title="{$pre_listing['name']}" alt="{$pre_listing['name']}">
+					<img class="thumb" src="assets/img/listing/user_upload/{$pre_listing['id']}_0.jpg" title="{$pre_listing['name']}" alt="{$pre_listing['name']}">
 				</div>
 				<p>{$pre_listing['description']}</p>
 			</div>

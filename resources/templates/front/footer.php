@@ -28,15 +28,3 @@
 		<p class="copyright">Copyright © 2022 - Dokan</p>
 	</div>
 </footer>
-
-<script>
-  function login_overlay(){
-		document.getElementById("overlay").style.display = "block";
-		document.getElementById("login").style.display = "block";
-	}
-	
-	function login_overlay_off() {
-		document.getElementById("overlay").style.display = "none";
-		document.getElementById("login").style.display = "none";
-	}
-</script>

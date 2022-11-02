@@ -3,14 +3,14 @@ require_once("../resources/config.php");
 include_once(TEMPLATE_FRONT . DS . "header.php");
 
 if(isset($_GET['cat_id'])){	// show specific category of listings
-	$listingQuery = query("SELECT * FROM listing WHERE category=" . $_GET['cat_id']);
+	$listingQuery = query("SELECT * FROM listing WHERE category={$_GET['cat_id']} AND status = 0;");
 	$category = query("SELECT * FROM category WHERE id=". $_GET['cat_id']);
 	confirm($category);
 	$category = mysqli_fetch_array($category);
 	$page_title = "Category - " . $category['name'];
 }
 else{	// show all listings
-	$listingQuery = query("SELECT * FROM listing");
+	$listingQuery = query("SELECT * FROM listing WHERE status = 0;");
 	$page_title = "All Listings - Dokan";
 }
 confirm($listingQuery);
@@ -33,7 +33,7 @@ echo "<title>" . $page_title . "</title>";
 	</div>
 	<?php
 	/************ Print gallery one row at a time ************/
-	for($item_in_row = 3, $rows = (int)($total_listing / $item_in_row); $rows != 0; $rows--){
+	for($item_in_row = 3, $rows = (int)($total_listing / $item_in_row) + 1; $rows != 0; $rows--){
 		echo '<div class="gallery-row">';
 
 		for($i = 0; $i < $item_in_row && $listing = mysqli_fetch_array($listingQuery); $i++){

@@ -18,6 +18,7 @@ main {
 	grid-template-rows: auto auto;
 }
 .grid-cell {
+	width: 50%;
 	background: var(--clr-dark-grey);
 	padding: 1rem;
 }
@@ -27,7 +28,9 @@ form {
 	padding: 1rem;
 	margin: 0;
 }
-
+.form-control {
+	background: #FFF;
+}
 .img-thumbnail {
 	width: 200px;
 }
@@ -41,6 +44,7 @@ ul.info {
 }
 .thumb-container {
 	float: left;
+	margin-right: 1rem;
 }
 div.listing-detail p{
 	margin-left: 1rem;

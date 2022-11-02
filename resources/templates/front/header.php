@@ -9,5 +9,4 @@
 		<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png"><!-- for apple devices -->
 		<link rel="manifest" href="assets/favicon/manifest.webmanifest">		<!-- for android devices -->
 		<link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">
+		<link type="text/css" rel="stylesheet" href="css/style.css">

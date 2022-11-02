@@ -7,7 +7,10 @@ section {
 section h2.title {
 	margin-top: 1rem;
 	color: #000;
+	text-transform: uppercase;
 }
+
+/* Hero image section */
 section.hero {
 	position: relative;
 	z-index: 5;
@@ -83,6 +86,9 @@ div.hero-info {
 .tile-overlay:hover {
 	visibility: visible;
 }
+/* End of Hero image section */
+
+/* Categories Section */
 section.categories {
 	position: relative;
 	background: linear-gradient(#E8AB00, #FFEEBE);
@@ -115,12 +121,24 @@ div.category h3 {
 	margin: 0 auto;
 	padding: 1rem;
 }
+/* End of Categories Section */
+
+/* Discover Rare Items Section */
 section.rare-items {
 	position: relative;
 	padding: 8rem 10% 1rem 10%;
 	margin-top: -8rem;
 	background-color: var(--clr-off-white);
 	z-index: 3;
+}
+.rare-items h2.title {
+	text-align: left;
+	text-transform: none;
+}
+.rare-items h2.title::after {
+	width: 14rem;
+	left: 0;
+	transform: none;
 }
 .gallery {
 	display: grid;
@@ -134,52 +152,59 @@ section.rare-items {
 	object-fit: cover;
 	display: block; 
 }
-
 .gallery__item--1 {
 	grid-column-start: 1;
 	grid-column-end: 3;
 	grid-row-start: 1;
 	grid-row-end: 3;
 }
-
 .gallery__item--2 {
 	grid-column-start: 3;
 	grid-column-end: 5;
 	grid-row-start: 1;
 	grid-row-end: 3;
 }
-
 .gallery__item--3 {
 	grid-column-start: 5;
 	grid-column-end: 9;
 	grid-row-start: 1;
 	grid-row-end: 6;
 }
-
 .gallery__item--4 {
 	grid-column-start: 1;
 	grid-column-end: 5;
 	grid-row-start: 3;
 	grid-row-end: 6;
 }
-
 .gallery__item--5 {
 	grid-column-start: 1;
 	grid-column-end: 5;
 	grid-row-start: 6;
 	grid-row-end: 9;
 }
-
 .gallery__item--6 {
 	grid-column-start: 5;
 	grid-column-end: 9;
 	grid-row-start: 6;
 	grid-row-end: 9;
 }
-section.register {
+/* Discover Rare Items Section */
+
+/* Registration Section */
+#register {
 	background: #FFF;
 	position: relative;
 	padding-top: 9rem;
 	margin-top: -9rem;
 	z-index: 2;
 }
+#register-form button {
+	width: 100%;
+	text-align: center;
+}
+#register-form {
+	margin: 0 auto;
+	width: 500px;
+	padding: 1rem;
+}
+/* End of Registration Section */

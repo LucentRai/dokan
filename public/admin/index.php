@@ -59,29 +59,70 @@ include_once(TEMPLATE_FRONT . DS . "admin-header.php");
 	}
 </style>
 </head>
-<body  class="text-center">
-<main class="form-signin">
-	<form action="admin/index.php" method="post">
-	<img class="mb-4" src="assets/img/logo-black.png" alt="Dokan Logo">
-	<h1 class="h3 mb-3 fw-normal">Admin sign in</h1>
-	<div class="form-floating">
-	  <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username" required>
-	  <label for="floatingInput">Username</label>
-	</div>
-	<div class="form-floating">
-	  <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
-	  <label for="floatingPassword">Password</label>
-	</div>
-
-	<!-- <div class="checkbox mb-3">
-	  <label>
-		<input type="checkbox" value="remember-me"> Remember me
-	  </label>
-	</div> -->
-	<button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign in</button>
-	<p class="mt-5 mb-3 text-muted">dokan.com &copy; 2022</p>
-	</form>
-</main>
+<body>
+	<?php
+		if(isset($_SESSION['admin'])){
+			include_once('dashboard.php');
+		}
+		else if(isset($_POST['username'])){
+			$query = query("SELECT * FROM admin WHERE username='{$_POST['username']}' AND password_hash='{$_POST['password']}'");
+			if(mysqli_num_rows($query) == 0){
+				echo <<<DELIMETER
+					<main class="form-signin">
+						<form action="admin/index.php" method="post">
+						<img class="mb-4" src="assets/img/logo-black.png" alt="Dokan Logo">
+						<h1 class="h3 mb-3 fw-normal">Admin sign in</h1>
+						<div class="form-floating">
+						<input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username" required>
+						<label for="floatingInput">Username</label>
+						</div>
+						<div class="form-floating">
+						<input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
+						<label for="floatingPassword">Password</label>
+						</div>
+					
+						<!-- <div class="checkbox mb-3">
+						<label>
+							<input type="checkbox" value="remember-me"> Remember me
+						</label>
+						</div> -->
+						<button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign in</button>
+						<p class="mt-5 mb-3 text-muted">dokan.com &copy; 2022</p>
+						</form>
+					</main>
+				DELIMETER;
+			}
+			else{
+				$_SESSION['admin'] = $_POST['username'];
+				include_once('dashboard.php');
+			}
+		}
+		else{echo <<<DELIMETER
+			<main class="form-signin">
+				<form action="admin/index.php" method="post">
+				<img class="mb-4" src="assets/img/logo-black.png" alt="Dokan Logo">
+				<h1 class="h3 mb-3 fw-normal">Admin sign in</h1>
+				<div class="form-floating">
+				<input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username" required>
+				<label for="floatingInput">Username</label>
+				</div>
+				<div class="form-floating">
+				<input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
+				<label for="floatingPassword">Password</label>
+				</div>
+			
+				<!-- <div class="checkbox mb-3">
+				<label>
+					<input type="checkbox" value="remember-me"> Remember me
+				</label>
+				</div> -->
+				<button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign in</button>
+				<p class="mt-5 mb-3 text-muted">dokan.com &copy; 2022</p>
+				</form>
+			</main>
+		DELIMETER;
+		}
+	?>
 <!-- <script src="js/bootstrap.min.js"></script> -->
 </body>
 </html>
