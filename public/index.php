@@ -2,14 +2,14 @@
 require_once("../resources/config.php");
 include_once(TEMPLATE_FRONT . DS . "header.php");
 
-$categoryQuery = query("SELECT * FROM category");	
+$categoryQuery = query("SELECT * FROM category");
 confirm($categoryQuery);
 
 $popular_listing_query = query("SELECT * FROM listing WHERE status=0 ORDER BY views desc limit 4;");
 confirm($popular_listing_query);
 
 ?>
-	<link type="text/css" rel="stylesheet" href="css/home.css">
+	<link rel="stylesheet" href="css/home.css">
 	<title>Dokan - Auction Store</title>
 </head>
 <body>
@@ -29,9 +29,9 @@ confirm($popular_listing_query);
 		<div class="listing-gallery">
 		<?php
 		while($popular_listing = mysqli_fetch_array($popular_listing_query)){
-			echo <<<DELIMETER
-				<a class="popular-listing-tile" href="listing-details.php?id={$popular_listing['id']}">
-					<img src="assets/img/listing/user_upload/{$popular_listing['id']}_0.jpg" alt="{$popular_listing['name']}" title="{$popular_listing['name']}">
+		?>
+				<a class="popular-listing-tile" href="listing-details.php?id=<?php echo $popular_listing['id']; ?>">
+					<img src="assets/img/listing/user_upload/<?php echo $popular_listing['id']; ?>_0.jpg" alt="<?php echo $popular_listing['name']; ?>" title="<?php echo $popular_listing['name']; ?>">
 					<div class="tile-overlay">
 					</div>
 					<div class="listing-info">
@@ -39,9 +39,7 @@ confirm($popular_listing_query);
 						<span class="listing-description">Vivamus justo ligula, dictum et nulla quis, blandit ornare nulla. Aenean at faucibus sem</span>
 					</div>
 				</a>
-			DELIMETER;
-		}
-		?>
+		<?php }	?>
 		</div>
 	</div>
 </section>
@@ -51,16 +49,14 @@ confirm($popular_listing_query);
 		<div class="row">
 			<?php
 			while($row = mysqli_fetch_array($categoryQuery)){
-				echo <<<DELIMETER
-				<a href="listings.php?cat_id={$row['id']}" class="col-3">
+			?>
+				<a href="listings.php?cat_id=<?php echo $row['id']; ?>" class="col-3">
 					<div class="category">
-						<img src="{$row['img']}" alt="{$row['name']}" title="{$row['name']} category">
-						<h3>{$row['name']}</h3>
+						<img src="<?php echo $row['img']; ?>" alt="<?php echo $row['name']; ?>" title="<?php echo $row['name']; ?> category">
+						<h3><?php echo $row['name']; ?></h3>
 					</div>
 				</a>
-				DELIMETER;
-			}
-			?>
+			<?php } ?>
 		</div>
 	</div>
 </section>
